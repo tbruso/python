@@ -1,0 +1,79 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+import scipy
+import math
+pi = 3.14
+class Circle1:
+    
+    
+    def __init__(self, radius, x, y):
+        self.setRadius(radius)
+        self.setArea()
+        self.setAll(x,y)
+        return
+        
+    def setRadius(self, r):
+        self.radius = r
+        return
+    def getRadius(self):
+        return self.radius
+    def setArea(self):
+        self.area = (self.getRadius() * self.getRadius() * pi)
+        return
+    def getArea(self):
+        return self.area
+    def setx(self, x):
+        self.x = x
+        return
+    def sety(self, y):
+        self.y = y
+        return
+    def setAll(self, x, y):
+        self.setx(x)
+        self.sety(y)
+        return
+    def getx(self):
+        return self.x
+    def gety(self):
+        return self.y
+        
+class Circle2:
+    
+    xlist = []
+    ylist = []
+    
+    def __init__(self,radius,start,end):
+         self.radius = radius
+         self.setThetaRange(start,end)
+         for t in pylab.frange(self.start, self.end, .01):
+            self.setAll(t)
+         self.coordinates = [self.xlist, self.ylist]
+         return
+    
+    def setThetaRange(self, start, end):
+        self.start = start
+        self.end = end
+        return
+    
+    def setx(self, theta):
+        self.x = self.radius * math.cos(theta)
+        self.xlist.append(self.x)
+        return
+        
+    def sety(self, theta):
+        self.y = self.radius * math.sin((theta))
+        self.ylist.append(self.y)
+        return
+        
+    def setAll(self, theta):
+        self.setx(theta)
+        self.sety(theta)
+        return
+    
+    def plot(self):
+       plt.plot(self.xlist,self.ylist) 
+       return
+       
+
+        
