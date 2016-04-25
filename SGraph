@@ -1,0 +1,61 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+class SGraph:
+    def __init__(self, q1, q2, s):
+        self.q1=q1
+        self.q2=q2
+        self.s=s
+        self.v1=0
+        self.v2=10
+        self.x1 = np.arange(self.q1,self.s,.01)
+        self.x2 = np.arange(self.s,self.q2,.01)
+        self.y1 = ((self.v2+1)**((self.x1-self.v1-1)/(self.s-self.q1)))-self.q1
+        self.y2 = ((self.v2+1)**((self.q2-self.x2)/(self.q2-self.s)))-self.q1
+        return
+        
+    def setq1(self, q1):
+        self.q1 = q1
+        return
+    
+    def setq2(self, q2):
+        self.q2 = q2
+        return
+    
+    def sets(self,s):
+        self.s = s
+        return
+    
+    def setv1(self,v1):
+        self.v1 = v1
+        return
+    
+    def setv2(self, v2):
+        self.v2 = v2
+        return
+    
+    def getq1(self):
+        return self.q1
+        
+    def getq2(self):
+        return self.q2
+        
+    def gets(self):
+        return self.s
+        
+    def getv1(self):
+        return self.v1
+        
+    def getv2(self):
+        return self.v2
+        
+    def plot(self):
+        plt.plot(self.x1,self.y1,self.x2,self.y2,color='b')
+        plt.xlabel("Quality")
+        plt.ylabel("Value")
+        plt.axis([self.q1-(self.q1*.1), self.q2+(self.q2*.1), self.v1-(self.v1*.1), self.v2+(self.v2*.1)])
+     
+graph = SGraph(1,10,7)
+graph.plot()
+plt.show()    
+    
